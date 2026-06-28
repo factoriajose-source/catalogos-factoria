@@ -547,8 +547,7 @@
         }
 
         function descargarBackup() {
-            const fecha = new Date().toISOString().split('T')[0];
-            const archivo = `backup-${fecha}.json`;
+            const archivo = 'catalogos.json';
             const contenido = JSON.stringify(datos, null, 2);
             const blob = new Blob([contenido], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
@@ -556,7 +555,7 @@
             a.href = url;
             a.download = archivo;
             a.click();
-            alert('✓ Backup descargado: ' + archivo + '\n\nAhora sube a GitHub: data/catalogos.json');
+            alert('✓ Descargado: ' + archivo + '\n\n📌 Ahora en GitHub:\n1. Abre: data/catalogos.json\n2. Botón ✏️ (Editar)\n3. Borra TODO\n4. Pega el contenido\n5. "Commit changes"');
         }
 
         function mostrarMensaje(tipo, texto) {
