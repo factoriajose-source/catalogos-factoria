@@ -23,9 +23,9 @@
     },
     {
       "id": 4,
-      "nombre": "Neoclásico",
+      "nombre": "Armarios y Vestidores ",
       "emoji": "✨",
-      "descripcionFamilia": "Elegancia y sofisticación clásica",
+      "descripcionFamilia": "Elegancia y sofisticación a la medida",
       "activo": true
     },
     {
@@ -104,7 +104,7 @@
       "nombre": "Salones a Medida y Totalmente Personalizables.",
       "descripcion": "Variedad de acabados, muebles especiales y personalizados a tu gusto, nos adaptamos a todo.",
       "proveedor": "Natura",
-      "pdf": "catalogos/Salones/Natura_Salones_Personalizados_a_Medida.pdf ",
+      "pdf": "catalogos/Salones/Natura_Salones_Personalizados_a_Medida.pdf",
       "imagen": "catalogos/Salones/natura.jpg",
       "activo": true,
       "orden": 2
@@ -123,11 +123,11 @@
     {
       "id": 401,
       "familiaId": 4,
-      "nombre": "Colección Neoclásica",
-      "descripcion": "Elegancia y sofisticación con toques clásicos modernizados.",
-      "proveedor": "Montes Design",
-      "pdf": "catalogos/Neoclasico/ejemplo-neoclasico.pdf",
-      "imagen": "catalogos/Neoclasico/thumb-neoclasico.jpg",
+      "nombre": "Armarios y Vestidores a Medida !!! ",
+      "descripcion": "Elegancia y sofisticación con toques únicos con armarios que encajan en todas las zonas.",
+      "proveedor": "TG",
+      "pdf": "catalogos/Neoclasico/MueblesLaFactoriaArmarios.pdf",
+      "imagen": "catalogos/Neoclasico/armarios.jpg",
       "activo": true,
       "orden": 1
     },
