@@ -339,6 +339,8 @@
                     <h2 class="panel-title">📂 Familias</h2>
                     <div id="familiasContainer"></div>
 
+                    <button class="add-btn" onclick="agregarFamilia()" style="margin-top: 15px;">➕ Agregar Nueva Familia</button>
+
                     <div class="stats">
                         <div class="stats-item">
                             <span>Total de familias:</span>
@@ -436,17 +438,32 @@
             container.innerHTML = '';
 
             datosGlobales.familias.forEach(familia => {
+                const catalogosFamilia = datosGlobales.catalogos.filter(c => c.familiaId === familia.id).length;
                 const div = document.createElement('div');
                 div.className = `familia-item ${!familia.activo ? 'inactive' : ''}`;
                 div.innerHTML = `
                     <div>
                         <div class="familia-name">${familia.emoji} ${familia.nombre}</div>
                         <small style="color: #888;">${familia.descripcionFamilia}</small>
+                        <small style="color: #7A9A01; font-weight: 600;">📚 ${catalogosFamilia} catálogos</small>
                     </div>
-                    <button class="toggle-btn ${!familia.activo ? 'inactive' : ''}" 
-                            onclick="toggleFamilia(${familia.id})">
-                        ${familia.activo ? '✓ Activo' : '✗ Inactivo'}
-                    </button>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="action-btn toggle-btn ${!familia.activo ? 'inactive' : ''}" 
+                                onclick="toggleFamilia(${familia.id})"
+                                style="padding: 6px 12px; font-size: 0.85em;">
+                            ${familia.activo ? '✓' : '✗'}
+                        </button>
+                        <button class="action-btn" 
+                                style="background: #2196F3; color: white; padding: 6px 12px; font-size: 0.85em;"
+                                onclick="editarFamilia(${familia.id})">
+                            ✏️ Editar
+                        </button>
+                        <button class="action-btn delete-btn" 
+                                style="padding: 6px 12px; font-size: 0.85em;"
+                                onclick="eliminarFamilia(${familia.id})">
+                            🗑️
+                        </button>
+                    </div>
                 `;
                 container.appendChild(div);
             });
@@ -471,6 +488,76 @@
                 renderizarCatalogos();
                 actualizarStats();
             }
+        }
+
+        // Editar familia
+        function editarFamilia(id) {
+            const familia = datosGlobales.familias.find(f => f.id === id);
+            if (!familia) return;
+
+            const nuevoNombre = prompt('Nombre de la familia:', familia.nombre);
+            if (!nuevoNombre) return;
+
+            const nuevoEmoji = prompt('Emoji (ej: 🛏️):', familia.emoji);
+            if (!nuevoEmoji) return;
+
+            const nuevaDescripcion = prompt('Descripción:', familia.descripcionFamilia);
+            if (nuevaDescripcion === null) return;
+
+            familia.nombre = nuevoNombre;
+            familia.emoji = nuevoEmoji;
+            familia.descripcionFamilia = nuevaDescripcion;
+
+            renderizarFamilias();
+            renderizarCatalogos();
+            alert('✓ Familia actualizada');
+        }
+
+        // Eliminar familia
+        function eliminarFamilia(id) {
+            const familia = datosGlobales.familias.find(f => f.id === id);
+            if (!familia) return;
+
+            const catalogosAsociados = datosGlobales.catalogos.filter(c => c.familiaId === id).length;
+
+            if (catalogosAsociados > 0) {
+                alert(`❌ No puedes eliminar esta familia.\nTiene ${catalogosAsociados} catálogos asociados.\n\nPrimero elimina los catálogos.`);
+                return;
+            }
+
+            if (confirm(`¿Estás seguro de eliminar la familia "${familia.nombre}"?`)) {
+                datosGlobales.familias = datosGlobales.familias.filter(f => f.id !== id);
+                renderizarFamilias();
+                renderizarCatalogos();
+                actualizarStats();
+                alert('✓ Familia eliminada');
+            }
+        }
+
+        // Agregar nueva familia
+        function agregarFamilia() {
+            const nombre = prompt('Nombre de la nueva familia:');
+            if (!nombre) return;
+
+            const emoji = prompt('Emoji (ej: 🛋️, 🪑, 💎):', '📦');
+            if (emoji === null) return;
+
+            const descripcion = prompt('Descripción:', '');
+            if (descripcion === null) return;
+
+            const nuevoId = Math.max(...datosGlobales.familias.map(f => f.id), 0) + 1;
+
+            datosGlobales.familias.push({
+                id: nuevoId,
+                nombre: nombre,
+                emoji: emoji,
+                descripcionFamilia: descripcion,
+                activo: true
+            });
+
+            renderizarFamilias();
+            actualizarStats();
+            alert('✓ Familia creada exitosamente');
         }
 
         // Renderizar catálogos
