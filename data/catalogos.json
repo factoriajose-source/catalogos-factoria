@@ -178,18 +178,18 @@
     {
       "id": 603,
       "familiaId": 6,
-      "nombre": "Item",
+      "nombre": "Aurum Sofas Únicos",
       "descripcion": "Muebles de tapicería con acabados versátiles para cualquier espacio.",
-      "proveedor": "Item",
-      "pdf": "catalogos/Tapiceria/ejemplo-item.pdf",
-      "imagen": "catalogos/Tapiceria/thumb-item.jpg",
+      "proveedor": "Aurum",
+      "pdf": "catalogos/Tapiceria/aurum-cat-esp 25",
+      "imagen": "catalogos/Tapiceria/aurum.jpg.jpg",
       "activo": true,
       "orden": 3
     },
     {
       "id": 701,
       "familiaId": 7,
-      "nombre": "Colchones, Bases y Canape ",
+      "nombre": "Colchones, Bases y Canapes ",
       "descripcion": "Colchones ergonómicos y bases de cama de máxima calidad.",
       "proveedor": "Sleep Planet",
       "pdf": "catalogos/Descanso/Somilar.pdf",
