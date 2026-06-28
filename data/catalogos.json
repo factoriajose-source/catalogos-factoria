@@ -81,9 +81,9 @@
       "familiaId": 1,
       "nombre": "Dormitorios Modernos",
       "descripcion": "Diseños contemporáneos con líneas limpias y acabados especiales.",
-      "proveedor": "GNESIS",
-      "pdf": "catalogos/Dormitorios/ejemplo-dormi-modernos.pdf",
-      "imagen": "catalogos/Dormitorios/thumb-dormi-modernos.jpg",
+      "proveedor": "TOP",
+      "pdf": "catalogos/Dormitorios/CR_TOP_V6_Dormitorios_Prov.678.pdf",
+      "imagen": "catalogos/Dormitorios/thumb1.jpg",
       "activo": true,
       "orden": 2
     },
