@@ -1,1 +1,267 @@
-
+{
+  "familias": [
+    {
+      "id": 1,
+      "nombre": "Dormitorios",
+      "emoji": "🛏️",
+      "descripcionFamilia": "Colecciones completas de dormitorios",
+      "activo": true
+    },
+    {
+      "id": 2,
+      "nombre": "Salones",
+      "emoji": "🛋️",
+      "descripcionFamilia": "Sofás, mesas y complementos para salón",
+      "activo": true
+    },
+    {
+      "id": 3,
+      "nombre": "Colonial",
+      "emoji": "🌳",
+      "descripcionFamilia": "Muebles de estilo colonial",
+      "activo": true
+    },
+    {
+      "id": 4,
+      "nombre": "Neoclásico",
+      "emoji": "✨",
+      "descripcionFamilia": "Elegancia y sofisticación clásica",
+      "activo": true
+    },
+    {
+      "id": 5,
+      "nombre": "Juveniles",
+      "emoji": "🎨",
+      "descripcionFamilia": "Dormitorios y muebles para jóvenes",
+      "activo": true
+    },
+    {
+      "id": 6,
+      "nombre": "Tapicería",
+      "emoji": "🪑",
+      "descripcionFamilia": "Sofás, sillas y muebles tapizados",
+      "activo": true
+    },
+    {
+      "id": 7,
+      "nombre": "Descanso",
+      "emoji": "😴",
+      "descripcionFamilia": "Colchones, bases y complementos",
+      "activo": true
+    },
+    {
+      "id": 8,
+      "nombre": "Alta Decoración",
+      "emoji": "💎",
+      "descripcionFamilia": "Piezas exclusivas y de alta gama",
+      "activo": true
+    },
+    {
+      "id": 9,
+      "nombre": "Auxiliares",
+      "emoji": "📦",
+      "descripcionFamilia": "Mesas, almacenaje y complementos",
+      "activo": true
+    }
+  ],
+  "catalogos": [
+    {
+      "id": 101,
+      "familiaId": 1,
+      "nombre": "Dormitorios Clásicos",
+      "descripcion": "Colección de dormitorios con diseños tradicionales y acabados de calidad.",
+      "proveedor": "Moycor",
+      "pdf": "catalogos/Dormitorios/ejemplo-dormi-clasicos.pdf",
+      "imagen": "catalogos/Dormitorios/thumb-dormi-clasicos.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 102,
+      "familiaId": 1,
+      "nombre": "Dormitorios Modernos",
+      "descripcion": "Diseños contemporáneos con líneas limpias y acabados especiales.",
+      "proveedor": "GNESIS",
+      "pdf": "catalogos/Dormitorios/ejemplo-dormi-modernos.pdf",
+      "imagen": "catalogos/Dormitorios/thumb-dormi-modernos.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 201,
+      "familiaId": 2,
+      "nombre": "Muebles de Salón",
+      "descripcion": "Sofás, mesas, estanterías y complementos para tu salón.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/Salones/ejemplo-salon-general.pdf",
+      "imagen": "catalogos/Salones/thumb-salon-general.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 202,
+      "familiaId": 2,
+      "nombre": "Sofás y Chaises",
+      "descripcion": "Variedad de sofás con diferentes tamaños y tapizados.",
+      "proveedor": "Tapizados Pedro Ortiz",
+      "pdf": "catalogos/Salones/ejemplo-sofas.pdf",
+      "imagen": "catalogos/Salones/thumb-sofas.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 301,
+      "familiaId": 3,
+      "nombre": "Colección Colonial",
+      "descripcion": "Muebles de estilo colonial con acabados en madera natural.",
+      "proveedor": "Moycor",
+      "pdf": "catalogos/Colonial/ejemplo-colonial.pdf",
+      "imagen": "catalogos/Colonial/thumb-colonial.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 401,
+      "familiaId": 4,
+      "nombre": "Colección Neoclásica",
+      "descripcion": "Elegancia y sofisticación con toques clásicos modernizados.",
+      "proveedor": "Montes Design",
+      "pdf": "catalogos/Neoclasico/ejemplo-neoclasico.pdf",
+      "imagen": "catalogos/Neoclasico/thumb-neoclasico.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 501,
+      "familiaId": 5,
+      "nombre": "Dormitorios Juveniles",
+      "descripcion": "Diseños modernos y funcionales para habitaciones jóvenes.",
+      "proveedor": "GNESIS",
+      "pdf": "catalogos/Juveniles/ejemplo-juveniles.pdf",
+      "imagen": "catalogos/Juveniles/thumb-juveniles.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 502,
+      "familiaId": 5,
+      "nombre": "Muebles Infantiles",
+      "descripcion": "Colección segura y colorida para niños y niñas.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/Juveniles/ejemplo-infantiles.pdf",
+      "imagen": "catalogos/Juveniles/thumb-infantiles.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 601,
+      "familiaId": 6,
+      "nombre": "Bizzotto",
+      "descripcion": "Colección premium de tapicería italiana con diseños elegantes y tejidos de alta calidad.",
+      "proveedor": "Bizzotto",
+      "pdf": "catalogos/Tapiceria/ejemplo-bizzotto.pdf",
+      "imagen": "catalogos/Tapiceria/thumb-bizzotto.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 602,
+      "familiaId": 6,
+      "nombre": "Gabar",
+      "descripcion": "Sofás y sillas modernas con diseño contemporáneo y máxima comodidad.",
+      "proveedor": "Gabar",
+      "pdf": "catalogos/Tapiceria/ejemplo-gabar.pdf",
+      "imagen": "catalogos/Tapiceria/thumb-gabar.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 603,
+      "familiaId": 6,
+      "nombre": "Item",
+      "descripcion": "Muebles de tapicería con acabados versátiles para cualquier espacio.",
+      "proveedor": "Item",
+      "pdf": "catalogos/Tapiceria/ejemplo-item.pdf",
+      "imagen": "catalogos/Tapiceria/thumb-item.jpg",
+      "activo": true,
+      "orden": 3
+    },
+    {
+      "id": 701,
+      "familiaId": 7,
+      "nombre": "Colchones y Bases",
+      "descripcion": "Colchones ergonómicos y bases de cama de máxima calidad.",
+      "proveedor": "Vitalcama / RELAX",
+      "pdf": "catalogos/Descanso/ejemplo-colchones.pdf",
+      "imagen": "catalogos/Descanso/thumb-colchones.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 702,
+      "familiaId": 7,
+      "nombre": "Complementos de Descanso",
+      "descripcion": "Almohadas, edredones, somiers y accesorios de cama.",
+      "proveedor": "Dreamland",
+      "pdf": "catalogos/Descanso/ejemplo-complementos.pdf",
+      "imagen": "catalogos/Descanso/thumb-complementos.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 801,
+      "familiaId": 8,
+      "nombre": "Colección Exclusiva",
+      "descripcion": "Piezas de alta gama con diseños exclusivos y materiales premium.",
+      "proveedor": "Varios Premium",
+      "pdf": "catalogos/AltaDecoracion/ejemplo-exclusiva.pdf",
+      "imagen": "catalogos/AltaDecoracion/thumb-exclusiva.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 802,
+      "familiaId": 8,
+      "nombre": "Complementos Decorativos",
+      "descripcion": "Accesorios y elementos decorativos de diseño.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/AltaDecoracion/ejemplo-decorativos.pdf",
+      "imagen": "catalogos/AltaDecoracion/thumb-decorativos.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 901,
+      "familiaId": 9,
+      "nombre": "Mesas y Escritorios",
+      "descripcion": "Mesas auxiliares, mesas de centro y escritorios funcionales.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/Auxiliares/ejemplo-mesas.pdf",
+      "imagen": "catalogos/Auxiliares/thumb-mesas.jpg",
+      "activo": true,
+      "orden": 1
+    },
+    {
+      "id": 902,
+      "familiaId": 9,
+      "nombre": "Almacenaje y Estanterías",
+      "descripcion": "Estanterías, armarios auxiliares y soluciones de almacenaje.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/Auxiliares/ejemplo-almacenaje.pdf",
+      "imagen": "catalogos/Auxiliares/thumb-almacenaje.jpg",
+      "activo": true,
+      "orden": 2
+    },
+    {
+      "id": 903,
+      "familiaId": 9,
+      "nombre": "Complementos Auxiliares",
+      "descripcion": "Espejos, perchas, zapateros y otros complementos útiles.",
+      "proveedor": "Varios",
+      "pdf": "catalogos/Auxiliares/ejemplo-complementos.pdf",
+      "imagen": "catalogos/Auxiliares/thumb-complementos.jpg",
+      "activo": true,
+      "orden": 3
+    }
+  ]
+}
