@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Catálogos La Factoría</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { background: #f5f5f5; }
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7A9A01 0%, #4A2C17 100%);
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+        }
+        .login-box h1 {
+            color: #4A2C17;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            background: #7A9A01;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .login-box button:hover { background: #4A2C17; }
+        .admin-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .catalog-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid #7A9A01;
+        }
+        .catalog-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #4A2C17;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .catalog-title:hover {
+            background: #f0f0f0;
+        }
+        .editor-form {
+            display: none;
+            background: #f9f9f9;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            border: 2px solid #7A9A01;
+        }
+        .editor-form.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #4A2C17;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #7A9A01;
+            box-shadow: 0 0 5px rgba(122, 154, 1, 0.3);
+        }
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        .btn-save {
+            background: #4CAF50;
+            color: white;
+            flex: 1;
+        }
+        .btn-save:hover {
+            background: #45a049;
+        }
+        .btn-cancel {
+            background: #999;
+            color: white;
+        }
+        .btn-cancel:hover {
+            background: #888;
+        }
+        .btn-delete {
+            background: #c62828;
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+        .btn-delete:hover {
+            background: #b71c1c;
+        }
+        .btn-toggle {
+            background: #7A9A01;
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+        .btn-toggle:hover {
+            background: #4A2C17;
+        }
+        .catalog-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .logout-btn {
+            background: #c62828;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .hidden { display: none; }
+        .success-msg {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-msg {
+            background: #2196F3;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .logout-btn { background: #c62828; }
+        .logout-btn:hover { background: #b71c1c; }
+    </style>
+</head>
+<body>
+    <!-- LOGIN -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <h1>🔐 Panel Admin</h1>
+            <p>La Factoría - Gestión de Catálogos</p>
+            <input type="password" id="pwd" placeholder="Contraseña" autocomplete="off">
+            <button onclick="login()">Acceder</button>
+        </div>
+    </div>
+
+    <!-- ADMIN -->
+    <div id="adminScreen" class="hidden">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>⚙️ Panel de Administración</h1>
+                <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+            </div>
+
+            <div id="successMsg" class="success-msg hidden"></div>
+            <div id="infoMsg" class="info-msg hidden"></div>
+
+            <div id="catalogosContainer"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="descargarBackup()" style="background: #2196F3; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 1em;">
+                    📥 Descargar Backup JSON
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PASSWORD = "7557";
+        const STORAGE_KEY = "catalogos-la-factoria";
+        let datos = {};
+
+        function login() {
+            const pwd = document.getElementById('pwd').value;
+            if (pwd === PASSWORD) {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('adminScreen').classList.remove('hidden');
+                cargarDatos();
+            } else {
+                alert('❌ Contraseña incorrecta');
+                document.getElementById('pwd').value = '';
+            }
+        }
+
+        function logout() {
+            document.getElementById('adminScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('pwd').value = '';
+        }
+
+        document.getElementById('pwd')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        async function cargarDatos() {
+            try {
+                // Intentar cargar desde localStorage
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    datos = JSON.parse(stored);
+                    console.log('✓ Datos cargados desde localStorage');
+                } else {
+                    // Cargar desde JSON
+                    const res = await fetch('data/catalogos.json');
+                    datos = await res.json();
+                    guardarLocal();
+                    console.log('✓ Datos cargados desde JSON');
+                }
+                renderizar();
+            } catch (error) {
+                alert('Error: ' + error.message);
+                console.error(error);
+            }
+        }
+
+        function guardarLocal() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(datos));
+                console.log('✓ Guardado en localStorage');
+                mostrarMensaje('success', '✓ Cambios guardados localmente');
+            } catch (error) {
+                console.error('Error guardando:', error);
+                alert('❌ Error al guardar: ' + error.message);
+            }
+        }
+
+        function renderizar() {
+            const container = document.getElementById('catalogosContainer');
+            container.innerHTML = '';
+
+            datos.catalogos.forEach(catalogo => {
+                const familia = datos.familias.find(f => f.id === catalogo.familiaId);
+                const div = document.createElement('div');
+                div.className = 'catalog-item';
+                div.innerHTML = `
+                    <div class="catalog-title" onclick="toggleEditor(${catalogo.id})">
+                        ${familia.emoji} ${catalogo.nombre}
+                        <small style="display: block; margin-top: 5px; color: #888;">
+                            👤 ${catalogo.proveedor} | 📄 ${catalogo.pdf.split('/').pop()}
+                        </small>
+                    </div>
+
+                    <div id="editor-${catalogo.id}" class="editor-form">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" id="nombre-${catalogo.id}" value="${catalogo.nombre}">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Proveedor</label>
+                                <input type="text" id="prov-${catalogo.id}" value="${catalogo.proveedor}">
+                            </div>
+                            <div class="form-group">
+                                <label>Orden</label>
+                                <input type="number" id="orden-${catalogo.id}" value="${catalogo.orden}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="desc-${catalogo.id}">${catalogo.descripcion}</textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>PDF (Ruta)</label>
+                                <input type="text" id="pdf-${catalogo.id}" value="${catalogo.pdf}">
+                            </div>
+                            <div class="form-group">
+                                <label>Imagen (Ruta)</label>
+                                <input type="text" id="img-${catalogo.id}" value="${catalogo.imagen || ''}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select id="activo-${catalogo.id}">
+                                <option value="true" ${catalogo.activo ? 'selected' : ''}>✓ Activo</option>
+                                <option value="false" ${!catalogo.activo ? 'selected' : ''}>✗ Inactivo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button class="btn btn-save" onclick="guardarCatalogo(${catalogo.id})">💾 Guardar</button>
+                            <button class="btn btn-cancel" onclick="toggleEditor(${catalogo.id})">Cancelar</button>
+                        </div>
+                    </div>
+
+                    <div class="catalog-actions">
+                        <button class="btn btn-toggle" onclick="toggleActivo(${catalogo.id})">
+                            ${catalogo.activo ? '✓ Activo' : '✗ Inactivo'}
+                        </button>
+                        <button class="btn btn-delete" onclick="eliminarCatalogo(${catalogo.id})">🗑️ Eliminar</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleEditor(id) {
+            const editor = document.getElementById(`editor-${id}`);
+            if (editor) {
+                editor.classList.toggle('active');
+            }
+        }
+
+        function guardarCatalogo(id) {
+            const catalogo = datos.catalogos.find(c => c.id === id);
+            if (!catalogo) return;
+
+            // Obtener valores
+            catalogo.nombre = document.getElementById(`nombre-${id}`).value;
+            catalogo.proveedor = document.getElementById(`prov-${id}`).value;
+            catalogo.descripcion = document.getElementById(`desc-${id}`).value;
+            catalogo.pdf = document.getElementById(`pdf-${id}`).value;
+            catalogo.imagen = document.getElementById(`img-${id}`).value;
+            catalogo.orden = parseInt(document.getElementById(`orden-${id}`).value);
+            catalogo.activo = document.getElementById(`activo-${id}`).value === 'true';
+
+            // Guardar en localStorage
+            guardarLocal();
+
+            // Cerrar editor
+            toggleEditor(id);
+
+            // Renderizar
+            renderizar();
+
+            // Mensaje de confirmación
+            alert('✓ Catálogo guardado correctamente\n\nCambios guardados en tu navegador.\nDescarga el Backup JSON para actualizar GitHub.');
+        }
+
+        function toggleActivo(id) {
+            const catalogo = datos.catalogos.find(c => c.id === id);
+            if (catalogo) {
+                catalogo.activo = !catalogo.activo;
+                guardarLocal();
+                renderizar();
+            }
+        }
+
+        function eliminarCatalogo(id) {
+            if (confirm('¿Eliminar este catálogo?')) {
+                datos.catalogos = datos.catalogos.filter(c => c.id !== id);
+                guardarLocal();
+                renderizar();
+            }
+        }
+
+        function descargarBackup() {
+            const fecha = new Date().toISOString().split('T')[0];
+            const archivo = `backup-${fecha}.json`;
+            const contenido = JSON.stringify(datos, null, 2);
+            const blob = new Blob([contenido], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = archivo;
+            a.click();
+            alert('✓ Backup descargado: ' + archivo + '\n\nAhora sube a GitHub: data/catalogos.json');
+        }
+
+        function mostrarMensaje(tipo, texto) {
+            const el = document.getElementById(tipo + 'Msg');
+            el.textContent = texto;
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.add('hidden'), 3000);
+        }
+    </script>
+</body>
+</html>
