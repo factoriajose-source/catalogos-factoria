@@ -1,1 +1,371 @@
+/* ============================================
+   ESTILOS GLOBALES - La Factoría
+   ============================================ */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ============================================
+   COLORES CORPORATIVOS LA FACTORÍA
+   ============================================ */
+
+:root {
+    --color-primary: #7A9A01;      /* Verde Oliva - Pantone 384C */
+    --color-secondary: #4A2C17;    /* Marrón oscuro - Pantone 476C */
+    --color-accent: #C8BA8B;       /* Beige - Pantone 614C */
+    --color-light: #f5f5f5;
+    --color-dark: #333;
+    --color-border: #ddd;
+    --color-error: #c62828;
+    --color-success: #4CAF50;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 4px solid var(--color-primary);
+    padding-bottom: 30px;
+}
+
+.header h1 {
+    color: var(--color-secondary);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* ============================================
+   INFO BOX
+   ============================================ */
+
+.info-box {
+    background: #E8F4E1;
+    border-left: 5px solid var(--color-primary);
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    color: #555;
+}
+
+.info-box h3 {
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.info-box p {
+    line-height: 1.6;
+}
+
+/* ============================================
+   CATEGORÍAS Y SECCIONES
+   ============================================ */
+
+.category-section {
+    margin-bottom: 60px;
+}
+
+.category-title {
+    color: var(--color-primary);
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 5px solid var(--color-secondary);
+}
+
+/* ============================================
+   GRID DE CATÁLOGOS
+   ============================================ */
+
+.catalogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* ============================================
+   TARJETA DE CATÁLOGO
+   ============================================ */
+
+.catalog-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.catalog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(122, 154, 1, 0.2);
+}
+
+.catalog-thumbnail {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.catalog-thumbnail::before {
+    content: '📄';
+    animation: float 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+.catalog-thumbnail.with-image {
+    background-blend-mode: overlay;
+}
+
+.catalog-thumbnail.with-image::before {
+    display: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.catalog-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-name {
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.catalog-desc {
+    color: #888;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.catalog-proveedor {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+.download-btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+}
+
+.download-btn:hover {
+    background: var(--color-secondary);
+    text-decoration: none;
+    color: white;
+}
+
+.download-btn-small {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    width: auto;
+    display: inline-block;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer-note {
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-border);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .header p {
+        font-size: 1em;
+    }
+
+    .catalogs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .category-title {
+        font-size: 1.4em;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+
+    .category-section {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.4em;
+    }
+
+    .catalogs-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .category-title {
+        font-size: 1.2em;
+        padding-left: 10px;
+    }
+
+    .catalog-card {
+        margin-bottom: 10px;
+    }
+
+    .download-btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .header,
+    .download-btn,
+    .footer-note {
+        display: none;
+    }
+
+    .catalog-card {
+        page-break-inside: avoid;
+    }
+}
