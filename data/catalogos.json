@@ -70,9 +70,9 @@
       "familiaId": 1,
       "nombre": "Dormitorios Clásicos",
       "descripcion": "Colección de dormitorios con diseños tradicionales y acabados de calidad.",
-      "proveedor": "Moycor",
-      "pdf": "catalogos/Dormitorios/ejemplo-dormi-clasicos.pdf",
-      "imagen": "catalogos/Dormitorios/thumb-dormi-clasicos.jpg",
+      "proveedor": "Salcedo",
+      "pdf": "catalogos/Dormitorios/Dormitorios%20Neoclasicos_827.pdf",
+      "imagen": "catalogos/Dormitorios/thumb3.jpg",
       "activo": true,
       "orden": 1
     },
@@ -270,7 +270,7 @@
       "descripcion": "Diseños Contemporaneos para permanecer en el tiempo.",
       "proveedor": "1010",
       "pdf": "catalogos/Dormitorios/Catalogo%20Eos%20Cosmo%2020.pdf",
-      "imagen": "catalogos/Dormitorios/thumb2.jpg",  
+      "imagen": "catalogos/Dormitorios/thumb2.jpg",
       "activo": true,
       "orden": 3
     }
