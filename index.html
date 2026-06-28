@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogos de Muebles - La Factoría</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2em;
+            color: #7A9A01;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+            border-left: 5px solid #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Catálogos de Muebles</h1>
+            <p>Explora nuestras colecciones completas en PDF. Descarga los catálogos que te interesan.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📌 Instrucciones</h3>
+            <p>Cada catálogo se abrirá en una ventana nueva. Puedes descargar, guardar o imprimir directamente desde tu navegador. Si tienes dudas sobre cualquier producto, <strong>no dudes en contactarnos</strong>.</p>
+        </div>
+
+        <div id="content" class="loading">
+            Cargando catálogos...
+        </div>
+
+        <div class="footer-note">
+            <p>💬 ¿Necesitas asesoramiento? Llámanos o visita nuestras tiendas. Todos nuestros catálogos son orientativos. Consulta disponibilidad.</p>
+        </div>
+    </div>
+
+    <script>
+        async function cargarCatalogos() {
+            try {
+                const response = await fetch('data/catalogos.json');
+                if (!response.ok) throw new Error('No se pudo cargar el archivo');
+                
+                const data = await response.json();
+                const familias = data.familias;
+                const catalogos = data.catalogos;
+
+                let html = '';
+
+                // Iterar por cada familia activa
+                familias.forEach(familia => {
+                    if (!familia.activo) return;
+
+                    const catalogosFamilia = catalogos.filter(c => 
+                        c.familiaId === familia.id && c.activo
+                    );
+
+                    if (catalogosFamilia.length === 0) return;
+
+                    html += `
+                        <div class="category-section">
+                            <h2 class="category-title">${familia.emoji} ${familia.nombre}</h2>
+                            <div class="catalogs-grid">
+                    `;
+
+                    catalogosFamilia.forEach(catalogo => {
+                        const estiloImagen = catalogo.imagen 
+                            ? `style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('${catalogo.imagen}'); background-size: cover; background-position: center;"` 
+                            : '';
+
+                        const claseImagen = catalogo.imagen ? 'with-image' : '';
+
+                        html += `
+                            <div class="catalog-card">
+                                <div class="catalog-thumbnail ${claseImagen}" ${estiloImagen}></div>
+                                <div class="catalog-info">
+                                    <div class="catalog-name">${catalogo.nombre}</div>
+                                    <div class="catalog-desc">${catalogo.descripcion}</div>
+                                    <div class="catalog-proveedor"><small>📦 ${catalogo.proveedor}</small></div>
+                                    <a href="${catalogo.pdf}" target="_blank" class="download-btn">📥 Descargar PDF</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (html === '') {
+                    html = '<p class="error">No hay catálogos disponibles en este momento.</p>';
+                }
+
+                document.getElementById('content').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        <strong>Error al cargar los catálogos:</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Cargar catálogos cuando cargue la página
+        document.addEventListener('DOMContentLoaded', cargarCatalogos);
+    </script>
+</body>
+</html>
