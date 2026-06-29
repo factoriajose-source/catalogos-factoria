@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogos de Muebles - La Factoría</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2em;
+            color: #7A9A01;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+            border-left: 5px solid #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="data:image/png;base64,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\nVORK5CYII=" alt="Muebles La Factoría" style="max-width: 280px; height: auto; margin-bottom: 15px;">
+                <h1 style="margin-top: 0;">📚 Catálogos de Muebles</h1>
+            </div>
+            <p>Explora nuestras colecciones completas en PDF. Descarga los catálogos que te interesan.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📌 Instrucciones</h3>
+            <p>Cada catálogo se abrirá en una ventana nueva. Puedes descargar, guardar o imprimir directamente desde tu navegador. Si tienes dudas sobre cualquier producto, <strong>no dudes en contactarnos</strong>.</p>
+        </div>
+
+        <div id="content" class="loading">
+            Cargando catálogos...
+        </div>
+
+        <div class="footer-note">
+            <p>💬 ¿Necesitas asesoramiento? Llámanos o visita nuestras tiendas. Todos nuestros catálogos son orientativos. Consulta disponibilidad.</p>
+        </div>
+    </div>
+
+    <script>
+        async function cargarCatalogos() {
+            try {
+                const response = await fetch('data/catalogos.json');
+                if (!response.ok) throw new Error('No se pudo cargar el archivo');
+                
+                const data = await response.json();
+                const familias = data.familias;
+                const catalogos = data.catalogos;
+
+                let html = '';
+
+                // Iterar por cada familia activa
+                familias.forEach(familia => {
+                    if (!familia.activo) return;
+
+                    const catalogosFamilia = catalogos.filter(c => 
+                        c.familiaId === familia.id && c.activo
+                    );
+
+                    if (catalogosFamilia.length === 0) return;
+
+                    html += `
+                        <div class="category-section">
+                            <h2 class="category-title">${familia.emoji} ${familia.nombre}</h2>
+                            <div class="catalogs-grid">
+                    `;
+
+                    catalogosFamilia.forEach(catalogo => {
+                        const estiloImagen = catalogo.imagen 
+                            ? `style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('${catalogo.imagen}'); background-size: cover; background-position: center;"` 
+                            : '';
+
+                        const claseImagen = catalogo.imagen ? 'with-image' : '';
+
+                        html += `
+                            <div class="catalog-card">
+                                <div class="catalog-thumbnail ${claseImagen}" ${estiloImagen}></div>
+                                <div class="catalog-info">
+                                    <div class="catalog-name">${catalogo.nombre}</div>
+                                    <div class="catalog-desc">${catalogo.descripcion}</div>
+                                    <div class="catalog-proveedor"><small>📦 ${catalogo.proveedor}</small></div>
+                                    <a href="${catalogo.pdf}" target="_blank" class="download-btn">📥 Descargar PDF</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (html === '') {
+                    html = '<p class="error">No hay catálogos disponibles en este momento.</p>';
+                }
+
+                document.getElementById('content').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        <strong>Error al cargar los catálogos:</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Cargar catálogos cuando cargue la página
+        document.addEventListener('DOMContentLoaded', cargarCatalogos);
+    </script>
+</body>
+</html>
